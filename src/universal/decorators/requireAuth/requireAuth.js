@@ -32,7 +32,6 @@ export default ComposedComponent => {
 
     render() {
       const {isAuthenticated, location} = this.props;
-      console.log(location)
       if (isAuthenticated || isLoginUrl(location)) {
         return <ComposedComponent {...this.props}/>;
       }
