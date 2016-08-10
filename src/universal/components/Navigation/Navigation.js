@@ -15,8 +15,7 @@ export default class Navigation extends Component {
     return (
       <Paper zDepth={0} className={styles.nav}>
         <Link to="/" className={styles.brand}>
-          <img src={smallLogo} width="38" height="38" alt="React"/>
-          <span>React, Redux, Rethink</span>
+          <span>Iamaplayer.io brains</span>
         </Link>
         <div className={styles.menuButtons}>
           <Link className={styles.buttonBuffer} to="/kanban">

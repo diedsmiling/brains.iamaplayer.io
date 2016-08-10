@@ -1,4 +1,4 @@
-@value primary, secondary from 'universal/styles/colors.css';
+@value nephrits from 'universal/styles/colors.css';
 
 .nav {
   height: 64px;
@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 16px;
-  background: secondary !important;
+  background: white !important;
 }
 
 .menuButtons {
@@ -20,7 +20,7 @@
 }
 .menuButton {
   font-weight: 500 !important;
-  color: primary !important;
+  color: nephrits !important;
 }
 .brand {
   color: primary;

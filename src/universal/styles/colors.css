@@ -1,6 +1,7 @@
 @value primary: #61dafb;
 @value secondary: #373277;
-
+@value nephrits: #27ae60;
+@value snow: #ffffff;
 
 .brandColor {
   color: primary;
