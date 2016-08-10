@@ -1,9 +1,11 @@
-import React, {Component, PropTypes} from 'react';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-import styles from './Auth.css';
-import {Link} from 'react-router';
-import {loginUser, signupUser, oauthLogin} from '../../ducks/auth';
+import React, {Component, PropTypes} from 'react'
+import TextField from 'material-ui/TextField'
+import RaisedButton from 'material-ui/RaisedButton'
+import styles from './Auth.css'
+import {Link} from 'react-router'
+import {push} from 'react-router-redux'
+import {loginUser, signupUser} from '../../ducks/auth'
+import socketOptions from 'universal/utils/socketOptions'
 
 export default class Auth extends Component {
   static propTypes = {
@@ -30,31 +32,38 @@ export default class Auth extends Component {
     dispatch: PropTypes.func.isRequired
   }
 
+  componentWillMount() {
+    const authToken = localStorage.getItem(socketOptions.authTokenName)
+    if (authToken) {
+      this.props.dispatch(push('/'))
+    }
+  }
+
   render() {
-    const {fields: {email, password}, handleSubmit, isLogin, error, isAuthenticating, authError} = this.props;
-    const localError = error || authError._error;
+    const {fields: {email, password}, handleSubmit, isLogin, error, isAuthenticating, authError} = this.props
+    const localError = error || authError._error
     /* eslint-disable react/jsx-handler-names*/
     return (
       <div className={styles.loginForm}>
-        <h3>{isLogin ? 'Login' : 'Sign up'}</h3>
+        <h3>Login</h3>
         {localError && <span>{localError}</span>}
         <form className={styles.loginForm} onSubmit={handleSubmit(this.onSubmit)}>
-          <input style={{display: 'none'}} type="text" name="chromeisabitch"/>
+          <input style={{display: 'none'}} type='text' name='chromeisabitch'/>
 
           <TextField
             {...email}
-            type="text"
-            hintText="name@email.com"
+            type='text'
+            hintText='name@email.com'
             errorText={email.touched && email.error || ''}
-            floatingLabelText="Email"
+            floatingLabelText='Email'
           />
-          <input style={{display: 'none'}} type="text" name="chromeisabitch"/>
+          <input style={{display: 'none'}} type='text' name='chromeisabitch'/>
 
           <TextField
             {...password}
-            type="password"
-            floatingLabelText="Password"
-            hintText="hunter2"
+            type='password'
+            floatingLabelText='Password'
+            hintText='hunter2'
             errorText={password.touched && password.error || ''}
           />
 
@@ -65,9 +74,9 @@ export default class Auth extends Component {
 
           <div className={styles.loginButton}>
             <RaisedButton
-              label={isLogin ? 'Login' : 'Sign up'}
+              label='Login'
               secondary
-              type="submit"
+              type='submit'
               disabled={isAuthenticating}
               onClick={handleSubmit(this.onSubmit)}
             />
@@ -79,18 +88,13 @@ export default class Auth extends Component {
         </div>
         <span onClick={this.loginWithGoogle}>Login with Google</span>
       </div>
-    );
+    )
   }
-  // need async?
-  loginWithGoogle = () => {
-    const redirectRoute = this.props.location.query.next || '/';
-    this.props.dispatch(oauthLogin('/auth/google', redirectRoute));
-  };
 
   onSubmit = (data, dispatch) => {
     // gotta get that redirect from props
-    const redirectRoute = this.props.location.query.next || '/';
-    const authFunc = this.props.isLogin ? loginUser : signupUser;
-    return authFunc(dispatch, data, redirectRoute);
+    const redirectRoute = this.props.location.query.next || '/'
+    const authFunc = this.props.isLogin ? loginUser : signupUser
+    return authFunc(dispatch, data, redirectRoute)
   };
 }

@@ -23,19 +23,19 @@ export default class AuthContainer extends Component {
   };
 
   render() {
-    const {pathname} = this.props;
-    const isLogin = pathname && pathname.indexOf('/login') !== -1;
-    return <Auth isLogin={isLogin} {...this.props}/>;
+    const {pathname} = this.props
+    const isLogin = pathname && pathname.indexOf('/login') !== -1
+    return <Auth isLogin={isLogin} {...this.props}/>
   }
 }
 
 function mapStateToProps(state, props) {
-  state = ensureState(state);
-  const auth = state.get('auth');
+  state = ensureState(state)
+  const auth = state.get('auth')
   return {
     isAuthenticated: auth.get('isAuthenticated'),
     isAuthenticating: auth.get('isAuthenticating'),
     authError: auth.get('error').toJS(),
     pathname: props.location.pathname
-  };
+  }
 }

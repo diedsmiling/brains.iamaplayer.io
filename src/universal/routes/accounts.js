@@ -5,7 +5,7 @@ export default function (store) {
     component: LoginLayout,
     childRoutes: [
       require('./login')(store),
-      require('./signup'),
+      // require('./signup'),
       require('./logout'),
       require('./verifyEmail')
     ]

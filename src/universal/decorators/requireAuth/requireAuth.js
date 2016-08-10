@@ -4,10 +4,6 @@ import socketOptions from 'universal/utils/socketOptions'
 
 let key
 
-const isLoginUrl = location => {
-  return location.pathname === '/login'
-}
-
 export default ComposedComponent => {
   return class RequiredAuth extends Component {
     static propTypes = {
@@ -32,7 +28,7 @@ export default ComposedComponent => {
 
     render() {
       const {isAuthenticated, location} = this.props
-      if (isAuthenticated || isLoginUrl(location)) {
+      if (isAuthenticated) {
         return <ComposedComponent {...this.props}/>
       }
       return <div>Logging in...</div>
@@ -47,7 +43,7 @@ export default ComposedComponent => {
         }
         key = newKey
         const authToken = localStorage.getItem(socketOptions.authTokenName)
-        if ((hasAuthError || !authToken) && !isLoginUrl(location)) {
+        if (hasAuthError || !authToken) {
           dispatch(push('/login?next=%2Fkanban'))
         }
       }
