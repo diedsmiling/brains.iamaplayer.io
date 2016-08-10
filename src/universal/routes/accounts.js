@@ -1,13 +1,13 @@
-import LandingContainer from '../modules/landing/containers/Landing/LandingContainer';
+import LoginLayout from '../modules/layouts/containers/LoginLayoutContainer'
 
 export default function (store) {
   return {
-    component: LandingContainer,
+    component: LoginLayout,
     childRoutes: [
       require('./login')(store),
       require('./signup'),
       require('./logout'),
       require('./verifyEmail')
     ]
-  };
+  }
 }
