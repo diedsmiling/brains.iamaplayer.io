@@ -12,6 +12,7 @@ export default class Landing extends Component {
     const {isAuthenticated, children} = this.props;
     return (
       <div>
+        123
         <Navigation isAuthenticated={isAuthenticated}/>
         <div className={styles.component}>
           {children}

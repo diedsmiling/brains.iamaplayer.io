@@ -82,6 +82,7 @@
     "dotenv": "2.0.0",
     "dotenv-expand": "0.1.0",
     "es6-promisify": "4.0.0",
+    "eslint-config-standard": "^5.3.5",
     "express": "4.13.4",
     "express-jwt": "3.4.0",
     "googleapis": "5.2.1",
