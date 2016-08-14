@@ -1,5 +1,5 @@
-import React, {PropTypes, Component} from 'react';
-import styles from './App.css';
+import React, {PropTypes, Component} from 'react'
+import styles from './App.css'
 
 export default class App extends Component {
   static propTypes = {
@@ -8,9 +8,9 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className={styles.app}>
+      <div className={`${styles.app} container-fluid`}>
         {this.props.children}
       </div>
-    );
+    )
   }
 }

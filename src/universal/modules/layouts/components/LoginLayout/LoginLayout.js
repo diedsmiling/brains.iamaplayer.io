@@ -9,11 +9,10 @@ export default class LoginLayout extends Component {
   render() {
     const {isAuthenticated, children} = this.props
     return (
-      <div>
-        <div className={styles.component}>
+      <div className={styles.centered}>
+        <div className={`col-sm-12 col-xs-12 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4`}>
           {children}
         </div>
-        <Footer/>
       </div>
     )
   }

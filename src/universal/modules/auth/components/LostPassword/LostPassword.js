@@ -44,7 +44,7 @@ export default class LostPassword extends Component {
           <input style={{display: 'none'}} type="text" name="javascript-disabled"/>
           <div className={styles.lostPasswordButton}>
             <RaisedButton
-              label="Send password reset"
+              label='Send password reset'
               secondary
               type="submit"
               disabled={submitting}

@@ -6,6 +6,9 @@ import {Link} from 'react-router'
 import {push} from 'react-router-redux'
 import {loginUser, signupUser} from '../../ducks/auth'
 import socketOptions from 'universal/utils/socketOptions'
+import logo from './logo.png'
+import {COLORS} from 'universal/configs'
+import Paper from 'material-ui/Paper'
 
 export default class Auth extends Component {
   static propTypes = {
@@ -40,54 +43,70 @@ export default class Auth extends Component {
   }
 
   render() {
-    const {fields: {email, password}, handleSubmit, isLogin, error, isAuthenticating, authError} = this.props
+    const {fields: {email, password}, handleSubmit, isMobile, error, isAuthenticating, authError} = this.props
     const localError = error || authError._error
     /* eslint-disable react/jsx-handler-names*/
-    return (
-      <div className={styles.loginForm}>
-        <h3>Login</h3>
+    const content = (
+      <div>
+        <div className={`row ${styles.headingWrapper}`}>
+          <h3 className={styles.heading}>
+            <img className={styles.logo} src={logo}/> iamaplayer.io
+          </h3>
+        </div>
         {localError && <span>{localError}</span>}
-        <form className={styles.loginForm} onSubmit={handleSubmit(this.onSubmit)}>
-          <input style={{display: 'none'}} type='text' name='chromeisabitch'/>
-
-          <TextField
-            {...email}
-            type='text'
-            hintText='name@email.com'
-            errorText={email.touched && email.error || ''}
-            floatingLabelText='Email'
-          />
-          <input style={{display: 'none'}} type='text' name='chromeisabitch'/>
-
-          <TextField
-            {...password}
-            type='password'
-            floatingLabelText='Password'
-            hintText='hunter2'
-            errorText={password.touched && password.error || ''}
-          />
-
-          {isLogin ?
-            <Link to={{pathname: '/login/lost-password', query: {e: email.value}}} className={styles.lostPassword}>
-              Forgot your password?
-            </Link> : null}
-
-          <div className={styles.loginButton}>
+        <form onSubmit={handleSubmit(this.onSubmit)}>
+          <div className={`row ${styles.inputWrapper}`}>
+            <input style={{display: 'none'}} type='text' name='chromeisabitch'/>
+            <TextField
+              fullWidth
+              {...email}
+              type='text'
+              hintText='name@email.com'
+              errorText={email.touched && email.error || ''}
+              floatingLabelText='Email'
+            />
+          </div>
+          <div className={`row ${styles.inputWrapper}`}>
+            <input style={{display: 'none'}} type='text' name='chromeisabitch'/>
+            <TextField
+              fullWidth
+              {...password}
+              type='password'
+              floatingLabelText='Password'
+              hintText='hunter2'
+              errorText={password.touched && password.error || ''}
+            />
+          </div>
+          <div className={`row ${styles.buttonWrapper}`}>
             <RaisedButton
               label='Login'
-              secondary
               type='submit'
+              labelColor='#FFFFFF'
+              backgroundColor={COLORS.emerald}
               disabled={isAuthenticating}
               onClick={handleSubmit(this.onSubmit)}
             />
 
           </div>
         </form>
-        <div className={styles.hrWithText}>
-          <span className={styles.hrText}>or</span>
-        </div>
-        <span onClick={this.loginWithGoogle}>Login with Google</span>
       </div>
+    )
+
+    const wrappedContent = (
+      <Paper
+        style={{
+          padding: 30
+        }}
+      >
+        {content}
+      </Paper>
+    )
+
+    return (
+      <div className={`${styles.authForm} col-sm-12 col-md-12 col-lg-12 col-xs-12`}>
+        {isMobile ? content : wrappedContent}
+      </div>
+
     )
   }
 

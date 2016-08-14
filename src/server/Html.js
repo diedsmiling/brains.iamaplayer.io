@@ -14,29 +14,34 @@ export default class Html extends Component {
   }
 
   render() {
-    const PROD = process.env.NODE_ENV === 'production';
-    const {title, store, assets, renderProps} = this.props;
-    const {manifest, app, vendor} = assets || {};
-    const initialState = `window.__INITIAL_STATE__ = ${JSON.stringify(store.getState())}`;
+    const PROD = process.env.NODE_ENV === 'production'
+    const {title, store, assets, renderProps} = this.props
+    const {manifest, app, vendor} = assets || {}
+    const initialState = `window.__INITIAL_STATE__ = ${JSON.stringify(store.getState())}`
     const root = PROD && renderToString(
       <Provider store={store}>
         <RouterContext {...renderProps}/>
-      </Provider>);
+      </Provider>)
     return (
       <html>
         <head>
-          <meta charSet="utf-8"/>
-          {PROD && <link rel="stylesheet" href="/static/prerender.css" type="text/css"/>}
+          <meta charSet='utf-8'/>
+          <meta
+            name='viewport'
+            content='width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0'
+          />
+          {PROD && <link rel='stylesheet' href='/static/prerender.css' type='text/css'/>}
+          <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css' type='text/css'/>
           <title>{title}</title>
         </head>
         <body>
           <script dangerouslySetInnerHTML={{__html: initialState}}/>
-          {PROD ? <div id="root" dangerouslySetInnerHTML={{__html: root}}></div> : <div id="root"></div>}
+          {PROD ? <div id='root' dangerouslySetInnerHTML={{__html: root}}></div> : <div id='root'></div>}
           {PROD && <script dangerouslySetInnerHTML={{__html: manifest.text}}/>}
           {PROD && <script src={vendor.js}/>}
           <script src={PROD ? app.js : '/static/app.js'}/>
         </body>
       </html>
-    );
+    )
   }
 }
