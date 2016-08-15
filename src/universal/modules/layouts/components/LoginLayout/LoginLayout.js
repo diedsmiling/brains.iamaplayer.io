@@ -1,5 +1,4 @@
 import React, {PropTypes, Component} from 'react'
-import Footer from 'universal/components/Footer/Footer'
 import styles from './LoginLayout.css'
 
 export default class LoginLayout extends Component {
@@ -7,10 +6,17 @@ export default class LoginLayout extends Component {
     children: PropTypes.element.isRequired
   };
   render() {
-    const {isAuthenticated, children} = this.props
+    const {children} = this.props
     return (
       <div className={styles.centered}>
-        <div className={`col-sm-12 col-xs-12 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4`}>
+        <div
+          className={`
+            col-xs-12
+            col-sm-8 col-sm-offset-2
+            col-md-8 col-md-offset-2
+            col-lg-4 col-lg-offset-4
+          `}
+        >
           {children}
         </div>
       </div>
