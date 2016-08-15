@@ -3,7 +3,7 @@ import {IndexLink, Link} from 'react-router'
 import Drawer from 'material-ui/Drawer'
 import classes from './Sidebar.css'
 
-export const Sidebar = () => (
+const Sidebar = () => (
   <div>
     <Drawer />
     <h1>React Redux Starter Kit</h1>
@@ -17,4 +17,4 @@ export const Sidebar = () => (
   </div>
 )
 
-export default Header
+export default Sidebar

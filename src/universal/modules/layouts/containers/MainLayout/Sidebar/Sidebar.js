@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import React, {Component, PropTypes} from 'react'
-import Sidebar from 'modules/layouts/MainLayout/Sidebar/Sidebar'
+import Sidebar from 'universal/modules/layouts/components/MainLayout/Sidebar/Sidebar'
 
 @connect(mapStateToProps, mapDispatchToProps)
 export default class SidebarContainer extends Component {

@@ -1,6 +1,6 @@
 import makeReducer from 'universal/redux/makeReducer'
 import {resolvePromiseMap} from 'universal/utils/promises'
-import MainLayoutContainer from 'universal/modules/layouts/containers/MainLayoutContainer'
+import MainLayoutContainer from 'universal/modules/layouts/containers/MainLayout/MainLayoutContainer'
 
 export default function (store) {
   return {
