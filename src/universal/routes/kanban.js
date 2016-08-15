@@ -1,11 +1,11 @@
-import makeReducer from 'universal/redux/makeReducer';
-import {resolvePromiseMap} from 'universal/utils/promises';
-import LandingContainer from 'universal/modules/landing/containers/Landing/LandingContainer'
+import makeReducer from 'universal/redux/makeReducer'
+import {resolvePromiseMap} from 'universal/utils/promises'
+import MainLayoutContainer from 'universal/modules/layouts/containers/MainLayoutContainer'
 
 export default function (store) {
   return {
     path: 'kanban',
-    component: LandingContainer,
+    component: MainLayoutContainer,
     getIndexRoute: async (location, cb) => {
       const promiseMap = setKanbanImports()
       const importMap = await resolvePromiseMap(promiseMap)

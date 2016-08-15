@@ -1,4 +1,4 @@
-import LoginLayout from '../modules/layouts/containers/LoginLayoutContainer'
+import LoginLayout from '../modules/layouts/containers/LoginLayout/LoginLayoutContainer'
 
 export default function (store) {
   return {
