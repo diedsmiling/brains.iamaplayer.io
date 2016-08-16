@@ -12,7 +12,6 @@ export default class MainLayout extends Component {
     const {children} = this.props
     return (
       <div>
-        123
         <Sidebar/>
         <div className={styles.component}>
           {children}

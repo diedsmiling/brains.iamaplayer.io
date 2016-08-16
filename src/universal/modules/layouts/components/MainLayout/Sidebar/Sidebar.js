@@ -5,15 +5,16 @@ import classes from './Sidebar.css'
 
 const Sidebar = () => (
   <div>
-    <Drawer />
-    <h1>React Redux Starter Kit</h1>
-    <IndexLink to='/' activeClassName={classes.activeRoute}>
-      Home
-    </IndexLink>
-    {' · '}
-    <Link to='/counter' activeClassName={classes.activeRoute}>
-      Counter
-    </Link>
+    <Drawer>
+      <h1>iamaplayer.io</h1>
+      <IndexLink to='/' activeClassName={classes.activeRoute}>
+        Home
+      </IndexLink>
+      {' · '}
+      <Link to='/counter' activeClassName={classes.activeRoute}>
+        Counter
+      </Link>
+    </Drawer>
   </div>
 )
 
