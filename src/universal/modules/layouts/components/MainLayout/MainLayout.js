@@ -8,6 +8,7 @@ export default class MainLayout extends Component {
     children: PropTypes.element.isRequired,
     isAuthenticated: PropTypes.bool.isRequired
   };
+
   render() {
     const {children} = this.props
     return (

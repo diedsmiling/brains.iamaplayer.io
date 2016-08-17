@@ -22,3 +22,4 @@ function mapStateToProps(state) {
     isAuthenticated: ensureState(state).getIn(['auth', 'isAuthenticated'])
   }
 }
+

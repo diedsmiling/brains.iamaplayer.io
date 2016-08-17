@@ -1,11 +1,11 @@
-import React from 'react'
+import React, {PropTypes} from 'react'
 import {IndexLink, Link} from 'react-router'
 import Drawer from 'material-ui/Drawer'
 import classes from './Sidebar.css'
 
-const Sidebar = () => (
+const Sidebar = (props) => (
   <div>
-    <Drawer>
+    <Drawer open={props.isOpen}>
       <h1>iamaplayer.io</h1>
       <IndexLink to='/' activeClassName={classes.activeRoute}>
         Home
@@ -17,5 +17,7 @@ const Sidebar = () => (
     </Drawer>
   </div>
 )
-
+Sidebar.propTypes = {
+  isOpen: PropTypes.bool.isRequired
+}
 export default Sidebar
