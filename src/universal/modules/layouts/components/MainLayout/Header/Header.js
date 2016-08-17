@@ -10,10 +10,12 @@ const Header = props => (
         backgroundColor: COLORS.emerald
       }}
       iconClassNameRight='muidocs-icon-navigation-expand-more'
+      onLeftIconButtonTouchTap={props.layoutActions.toggleDrawer}
     />
   </div>
 )
 Header.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  layoutActions: PropTypes.object.isRequired
 }
 export default Header

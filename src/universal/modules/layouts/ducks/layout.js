@@ -22,7 +22,7 @@ export default function reducer(state = initialState, action) {
   /* eslint-disable no-case-declarations, no-redeclare */
   switch (action.type) {
     case TOGGLE_DRAWER:
-      return state.updateIn(['layout', 'isDrawerOpen'], v => !v)
+      return state.update('isDrawerOpen', v => !v)
     default:
       return state
   }
@@ -34,8 +34,7 @@ export default function reducer(state = initialState, action) {
 
 export function toggleDrawer() {
   return {
-    type: TOGGLE_DRAWER,
-    payload: device
+    type: TOGGLE_DRAWER
   }
 }
 
