@@ -3,9 +3,13 @@ import {IndexLink, Link} from 'react-router'
 import Drawer from 'material-ui/Drawer'
 import classes from './Sidebar.css'
 
-const Sidebar = (props) => (
+const Sidebar = props => (
   <div>
-    <Drawer open={props.isOpen}>
+    <Drawer
+      docked={props.isDocked}
+      open={props.isOpen}
+      onRequestChange={props.layoutActions.toggleDrawer} //eslint-disable-line
+    >
       <h1>iamaplayer.io</h1>
       <IndexLink to='/' activeClassName={classes.activeRoute}>
         Home
@@ -18,6 +22,9 @@ const Sidebar = (props) => (
   </div>
 )
 Sidebar.propTypes = {
-  isOpen: PropTypes.bool.isRequired
+  isOpen: PropTypes.bool.isRequired,
+  isDocked: PropTypes.bool.isRequired,
+  layoutActions: PropTypes.object.isRequired
+
 }
 export default Sidebar

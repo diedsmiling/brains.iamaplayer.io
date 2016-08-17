@@ -1,8 +1,7 @@
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import React, {Component, PropTypes} from 'react'
+import React, {Component} from 'react'
 import Header from 'universal/modules/layouts/components/MainLayout/Header/Header'
-import {ensureState} from 'redux-optimistic-ui'
 import {layoutActions} from 'universal/modules/layouts/ducks/layout'
 
 @connect(mapStateToProps, mapDispatchToProps)
