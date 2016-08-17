@@ -12,6 +12,7 @@ export default class SidebarContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    isOpen: ensureState(state).getIn(['layout', 'isDrawerOpen'])
+    isOpen: ensureState(state).getIn(['layout', 'isDrawerOpen']),
+    isDocked: !ensureState(state).getIn(['layout', 'device']).mobile
   }
 }
