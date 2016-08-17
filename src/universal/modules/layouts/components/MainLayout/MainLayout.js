@@ -1,5 +1,5 @@
 import React, {PropTypes, Component} from 'react'
-import Sidebar from 'universal/modules/layouts/containers/MainLayout/Sidebar/Sidebar'
+import Sidebar from 'universal/modules/layouts/containers/MainLayout/Sidebar/SidebarContainer'
 //import Navigation from 'universal/components/Navigation/Navigation'
 import styles from './MainLayout.css'
 
