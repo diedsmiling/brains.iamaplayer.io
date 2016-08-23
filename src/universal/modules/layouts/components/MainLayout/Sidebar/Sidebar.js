@@ -25,6 +25,6 @@ Sidebar.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   isDocked: PropTypes.bool.isRequired,
   layoutActions: PropTypes.object.isRequired
-
 }
+
 export default Sidebar

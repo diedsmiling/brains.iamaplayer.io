@@ -27,7 +27,8 @@ export default ComposedComponent => {
     }
 
     render() {
-      const {isAuthenticated, location} = this.props
+      console.log('adad')
+      const {isAuthenticated} = this.props
       if (isAuthenticated) {
         return <ComposedComponent {...this.props}/>
       }

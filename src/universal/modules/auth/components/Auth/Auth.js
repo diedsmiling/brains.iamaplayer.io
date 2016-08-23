@@ -32,7 +32,8 @@ export default class Auth extends Component {
       email: PropTypes.string,
       password: PropTypes.string
     }),
-    dispatch: PropTypes.func.isRequired
+    dispatch: PropTypes.func.isRequired,
+    isMobile: PropTypes.bool
   }
 
   componentWillMount() {

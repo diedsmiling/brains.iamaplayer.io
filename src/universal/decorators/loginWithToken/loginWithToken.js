@@ -8,9 +8,9 @@ export default authTokenName => ComposedComponent => {
     }
     componentWillMount() {
       if (__CLIENT__) {
-        const authToken = localStorage.getItem(authTokenName);
+        const authToken = localStorage.getItem(authTokenName)
         if (authToken) {
-          this.props.dispatch(loginToken());
+          this.props.dispatch(loginToken())
         }
       }
     }
@@ -18,7 +18,7 @@ export default authTokenName => ComposedComponent => {
     render() {
       return (
         <ComposedComponent {...this.props}/>
-      );
+      )
     }
-  };
-};
+  }
+}
