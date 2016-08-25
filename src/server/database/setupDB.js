@@ -1,7 +1,9 @@
 import r from './rethinkdriver'
+import {getDotenv} from '../../universal/utils/dotenv'
+getDotenv()
 
 // ava is the test database
-const databases = ['meatier', 'ava']
+const databases = ['iamaplayer', 'ava']
 
 const database = [
   {name: 'users', indices: ['email']},
@@ -46,5 +48,11 @@ async function reset({db, isUpdate}) {
       return Promise.resolve(false)
     })
   })])
+  console.log('>>Adding default user')
+  await r.db(db).table('users').insert({
+    id: 1,
+    email: process.env.DEFAULT_USER_EMAIL,
+    password: process.env.DEFAULT_USER_PASS
+  })
   console.log(`>>Setup complete for: ${db}`)
 }
