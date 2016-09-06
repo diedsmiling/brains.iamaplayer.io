@@ -153,13 +153,10 @@ export function loginToken() {
        payload: loginAuthToken
        ${user}
     }`
-    console.log(query)
     const {error, data} = await fetchGraphQL({query})
     if (error) {
-      console.log(error)
       dispatch(loginUserError(error))
     } else {
-      console.log(data)
       const {payload} = data
       dispatch(loginUserSuccess({user: payload}))
       const routingState = ensureState(getState()).get('routing')

@@ -1,10 +1,7 @@
 import {graphql} from 'graphql'
 import {prepareClientError} from './models/utils'
 import Schema from './rootSchema'
-console.log('graphql')
 export const wsGraphQLHandler = async function (body, cb) {
-  console.log('graphql handling')
-  console.log(body)
   const {query, variables, ...context} = body
   const authToken = this.getAuthToken()
   const docId = variables.doc && variables.doc.id || variables.id

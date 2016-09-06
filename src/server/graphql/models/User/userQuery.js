@@ -1,5 +1,6 @@
 import r from '../../../database/rethinkdriver'
 import {GraphQLNonNull, GraphQLID} from 'graphql'
+import {GraphQLError} from 'graphql/error'
 import {User, UserWithAuthToken} from './userSchema'
 import {errorObj} from '../utils'
 import {GraphQLEmailType, GraphQLPasswordType} from '../types'
