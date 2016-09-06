@@ -1,7 +1,7 @@
-import {reduxForm} from 'redux-form';
-import Joi from 'joi';
-import {parsedJoiErrors} from 'universal/utils/schema';
-import {getFormState} from 'universal/redux/helpers';
+import {reduxForm} from 'redux-form'
+import Joi from 'joi'
+import {parsedJoiErrors} from 'universal/utils/schema'
+import {getFormState} from 'universal/redux/helpers'
 
 /**
  * A small wrapper for reduxForm that can (optionally) inject a validate method based on the Joi `schema` prop in the
@@ -14,9 +14,9 @@ export default function meatierForm(options) {
     {getFormState},
     schema && {
       validate(values) {
-        const results = Joi.validate(values, options.schema, {abortEarly: false});
-        return parsedJoiErrors(results.error);
+        const results = Joi.validate(values, options.schema, {abortEarly: false})
+        return parsedJoiErrors(results.error)
       }
     }
-  ));
+  ))
 }

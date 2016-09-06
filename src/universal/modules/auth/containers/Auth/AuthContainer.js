@@ -1,8 +1,8 @@
-import React, {Component, PropTypes} from 'react';
-import {authSchemaInsert} from '../../schemas/auth';
-import {connect} from 'react-redux';
-import Auth from '../../components/Auth/Auth';
-import {ensureState} from 'redux-optimistic-ui';
+import React, {Component, PropTypes} from 'react'
+import {authSchemaInsert} from '../../schemas/auth'
+import {connect} from 'react-redux'
+import Auth from '../../components/Auth/Auth'
+import {ensureState} from 'redux-optimistic-ui'
 import meatierForm from 'universal/decorators/meatierForm/meatierForm'
 import isMobile from 'ismobilejs'
 

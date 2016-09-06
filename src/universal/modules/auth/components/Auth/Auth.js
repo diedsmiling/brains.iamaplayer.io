@@ -2,7 +2,6 @@ import React, {Component, PropTypes} from 'react'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import styles from './Auth.css'
-import {Link} from 'react-router'
 import {push} from 'react-router-redux'
 import {loginUser, signupUser} from '../../ducks/auth'
 import socketOptions from 'universal/utils/socketOptions'
@@ -54,7 +53,7 @@ export default class Auth extends Component {
             <img className={styles.logo} src={logo}/> iamaplayer.io
           </h3>
         </div>
-        {localError && <span>{localError}</span>}
+        {localError && <span className='error'>{localError}</span>}
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <div className={`row ${styles.inputWrapper}`}>
             <input style={{display: 'none'}} type='text' name='chromeisabitch'/>
