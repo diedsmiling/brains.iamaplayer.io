@@ -38,7 +38,7 @@ const babelQuery = {
 
 export default {
   // devtool: 'source-maps',
-  devtool: 'eval',
+  devtool: 'source-map',
   context: srcDir,
   entry: {
     app: [
