@@ -73,7 +73,8 @@ export default class Auth extends Component {
               {...email}
               type='text'
               hintText='name@email.com'
-              onBlur={function () {
+              onChange={function (e) {
+                email.onChange(e)
                 loginUserError(null)
               }}
               errorText={email.touched && email.error || localError || ''}
