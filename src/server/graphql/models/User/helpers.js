@@ -37,19 +37,19 @@ export const makeSecretToken = (userId, minutesToExpire) => {
   })).toString('base64')
 }
 
-export async function prepareUserData(email, pass) {
+export async function prepareUserData(email, pass, isVerified = false) {
   const hash = promisify(bcrypt.hash)
   const newHashedPass = await hash(pass, 10)
   const id = uuid.v4()
   // must verify email within 1 day
-  const verifiedEmailToken = makeSecretToken(id, 60 * 24)
+  const verifiedEmailToken = isVerified ? null : makeSecretToken(id, 60 * 24)
   return {
     id,
     email,
     createdAt: new Date(),
     strategies: {
       local: {
-        isVerified: false,
+        isVerified,
         password: newHashedPass,
         verifiedEmailToken
       }

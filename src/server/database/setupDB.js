@@ -53,7 +53,8 @@ async function reset({db, isUpdate}) {
 
   const userDoc = await prepareUserData(
     process.env.DEFAULT_USER_EMAIL,
-    process.env.DEFAULT_USER_PASS
+    process.env.DEFAULT_USER_PASS,
+    true
   )
   await r.db(db).table('users').insert(userDoc)
   console.log(`>>Setup complete for: ${db}`)
