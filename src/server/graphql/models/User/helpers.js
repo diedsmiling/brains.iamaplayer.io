@@ -1,6 +1,9 @@
 import r from '../../../database/rethinkdriver'
 import jwt from 'jsonwebtoken'
 import crypto from 'crypto'
+import promisify from 'es6-promisify'
+import bcrypt from 'bcrypt'
+import uuid from 'node-uuid'
 
 export const getUserByEmail = async email => {
   const users = await r.table('users').getAll(email, {index: 'email'}).limit(1).run()
@@ -32,4 +35,24 @@ export const makeSecretToken = (userId, minutesToExpire) => {
     sec: crypto.randomBytes(8).toString('base64'),
     exp: Date.now() + 1000 * 60 * minutesToExpire
   })).toString('base64')
+}
+
+export async function prepareUserData(email, pass) {
+  const hash = promisify(bcrypt.hash)
+  const newHashedPass = await hash(pass, 10)
+  const id = uuid.v4()
+  // must verify email within 1 day
+  const verifiedEmailToken = makeSecretToken(id, 60 * 24)
+  return {
+    id,
+    email,
+    createdAt: new Date(),
+    strategies: {
+      local: {
+        isVerified: false,
+        password: newHashedPass,
+        verifiedEmailToken
+      }
+    }
+  }
 }

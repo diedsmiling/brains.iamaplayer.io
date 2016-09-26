@@ -122,7 +122,7 @@ const user = `
   }
 }`
 
-const userWithAuthToken = `
+export const userWithAuthToken = `
 {
   user ${user},
   authToken

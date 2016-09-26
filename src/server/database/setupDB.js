@@ -1,5 +1,6 @@
 import r from './rethinkdriver'
 import {getDotenv} from '../../universal/utils/dotenv'
+import {prepareUserData} from '../../server/graphql/models/User/helpers'
 getDotenv()
 
 // ava is the test database
@@ -49,10 +50,11 @@ async function reset({db, isUpdate}) {
     })
   })])
   console.log('>>Adding default user')
-  await r.db(db).table('users').insert({
-    id: 1,
-    email: process.env.DEFAULT_USER_EMAIL,
-    password: process.env.DEFAULT_USER_PASS
-  })
+
+  const userDoc = await prepareUserData(
+    process.env.DEFAULT_USER_EMAIL,
+    process.env.DEFAULT_USER_PASS
+  )
+  await r.db(db).table('users').insert(userDoc)
   console.log(`>>Setup complete for: ${db}`)
 }
