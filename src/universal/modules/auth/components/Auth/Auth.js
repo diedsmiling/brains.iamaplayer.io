@@ -31,8 +31,12 @@ export default class Auth extends Component {
       email: PropTypes.string,
       password: PropTypes.string
     }),
+    layoutActions: PropTypes.shape({
+      loginUserError: PropTypes.func
+    }),
     dispatch: PropTypes.func.isRequired,
-    isMobile: PropTypes.bool
+    isMobile: PropTypes.bool,
+    loginUserError: PropTypes.func
   }
 
   componentWillMount() {
@@ -43,8 +47,16 @@ export default class Auth extends Component {
   }
 
   render() {
-    const {fields: {email, password}, handleSubmit, isMobile, error, isAuthenticating, authError} = this.props
-    const localError = error || authError._error
+    const {
+      fields: {email, password},
+      handleSubmit,
+      isMobile,
+      isAuthenticating,
+      authError,
+      layoutActions: {loginUserError}
+    } = this.props
+
+    const localError = authError._error
     /* eslint-disable react/jsx-handler-names*/
     const content = (
       <div>
@@ -53,7 +65,6 @@ export default class Auth extends Component {
             <img className={styles.logo} src={logo}/> iamaplayer.io
           </h3>
         </div>
-        {localError && <span className='error'>{localError}</span>}
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <div className={`row ${styles.inputWrapper}`}>
             <input style={{display: 'none'}} type='text' name='chromeisabitch'/>
@@ -62,7 +73,10 @@ export default class Auth extends Component {
               {...email}
               type='text'
               hintText='name@email.com'
-              errorText={email.touched && email.error || ''}
+              onBlur={function () {
+                loginUserError(null)
+              }}
+              errorText={email.touched && email.error || localError || ''}
               floatingLabelText='Email'
             />
           </div>

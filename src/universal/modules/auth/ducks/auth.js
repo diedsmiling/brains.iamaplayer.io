@@ -104,6 +104,13 @@ export function signupUserError(error) {
   }
 }
 
+export const authFunctions = {
+  signupUserError,
+  signupUserSuccess,
+  loginUserError,
+  loginUserSuccess
+}
+
 const user = `
 {
   id,
@@ -129,7 +136,7 @@ export const loginUser = (dispatch, variables, redirect) => {
        payload: login(email: $email, password: $password)
        ${userWithAuthToken}
     }`
-    console.log()
+
     const {error, data} = await fetchGraphQL({query, variables})
     if (error) {
       localStorage.removeItem(authTokenName)
