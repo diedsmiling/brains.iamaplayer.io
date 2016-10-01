@@ -1,8 +1,8 @@
 import React, {PropTypes} from 'react'
-import {IndexLink, Link} from 'react-router'
 import Drawer from 'material-ui/Drawer'
 import classes from './Sidebar.css'
 import Logo from 'universal/components/Logo/Logo'
+import Menu from './Menu/Menu'
 const Sidebar = props => (
   <div>
     <Drawer
@@ -12,13 +12,7 @@ const Sidebar = props => (
       onRequestChange={props.layoutActions.toggleDrawer} //eslint-disable-line
     >
       <Logo/>
-      <IndexLink to='/' activeClassName={classes.activeRoute}>
-        Home
-      </IndexLink>
-      {' · '}
-      <Link to='/counter' activeClassName={classes.activeRoute}>
-        Counter
-      </Link>
+      <Menu/>
     </Drawer>
   </div>
 )
