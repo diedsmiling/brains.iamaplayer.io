@@ -5,7 +5,7 @@ import styles from './Auth.css'
 import {push} from 'react-router-redux'
 import {loginUser, signupUser} from '../../ducks/auth'
 import socketOptions from 'universal/utils/socketOptions'
-import logo from './logo.png'
+import Logo from 'universal/components/Logo/Logo'
 import {COLORS} from 'universal/configs'
 import Paper from 'material-ui/Paper'
 
@@ -61,9 +61,7 @@ export default class Auth extends Component {
     const content = (
       <div>
         <div className={`row ${styles.headingWrapper}`}>
-          <h3 className={styles.heading}>
-            <img className={styles.logo} src={logo}/> iamaplayer.io
-          </h3>
+          <Logo/>
         </div>
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <div className={`row ${styles.inputWrapper}`}>
