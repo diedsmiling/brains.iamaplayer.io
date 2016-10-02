@@ -13,7 +13,8 @@ const MenuWrapper = props => (
     </Menu>
   </div>
 )
-Menu.propTypes = {
+
+MenuWrapper.propTypes = {
 
 }
 
