@@ -7,6 +7,7 @@ export default store => {
       require('./landing'),
       require('./kanban')(store),
       require('./accounts')(store),
+      require('./news')(store),
       require('./graphql'),
       require('./notFound')
     ]
