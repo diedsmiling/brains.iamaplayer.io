@@ -22,7 +22,7 @@ export default class KanbanContainer extends Component {
     super(props)
     const {dispatch, socketState} = props
     if (socketState === 'closed') {
-      // handle here & not in middleware to make it atomic, otherwise state could change between loadLanes & loadNotes
+      // handle here & not in middleware to make it atomic, otherwise state could change between loadNews & loadNews
       // dispatch(loadNews())
     }
   }
@@ -36,6 +36,7 @@ function mapStateToProps(state) {
   state = ensureState(state)
   const auth = state.get('auth')
   return {
+    isAuthenticated: auth.get('isAuthenticated')
   }
 }
 
