@@ -3,6 +3,7 @@ import MainLayout from 'universal/modules/layouts/components/MainLayout/MainLayo
 import {connect} from 'react-redux'
 import {ensureState} from 'redux-optimistic-ui'
 import requireAuth from 'universal/decorators/requireAuth/requireAuth'
+import isMobile from 'ismobilejs'
 
 @connect(mapStateToProps)
 @requireAuth
@@ -19,7 +20,8 @@ export default class LandingContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    isAuthenticated: ensureState(state).getIn(['auth', 'isAuthenticated'])
+    isAuthenticated: ensureState(state).getIn(['auth', 'isAuthenticated']),
+    isMobile: isMobile.phone
   }
 }
 

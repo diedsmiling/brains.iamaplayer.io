@@ -3,20 +3,28 @@ import Sidebar from 'universal/modules/layouts/containers/MainLayout/Sidebar/Sid
 import Header from 'universal/modules/layouts/containers/MainLayout/Header/HeaderContainer'
 //import Navigation from 'universal/components/Navigation/Navigation'
 import styles from './MainLayout.css'
+import classNames from 'classnames'
 
 export default class MainLayout extends Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
-    isAuthenticated: PropTypes.bool.isRequired
+    isAuthenticated: PropTypes.bool.isRequired,
+    isMobile: PropTypes.bool
   };
 
   render() {
-    const {children} = this.props
+    const {children, isMobile} = this.props
     return (
       <div>
         <Header/>
         <Sidebar/>
-        <div className={`${styles.component}  container-fluid`}>
+        <div
+          className={classNames({
+            'container-fluid': true,
+            [styles.desktopOffset]: !isMobile
+          })
+         }
+        >
           {children}
         </div>
       </div>
