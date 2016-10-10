@@ -2,7 +2,8 @@ import React, {PropTypes} from 'react'
 import Drawer from 'material-ui/Drawer'
 import classes from './Sidebar.css'
 import Logo from 'universal/components/Logo/Logo'
-import Menu from './Menu/Menu'
+import MenuContainer from 'universal/modules/layouts/containers/MainLayout/Sidebar/Menu/MenuContainer'
+
 const Sidebar = props => (
   <div>
     <Drawer
@@ -12,7 +13,7 @@ const Sidebar = props => (
       onRequestChange={props.layoutActions.toggleDrawer} //eslint-disable-line
     >
       <Logo className={classes.logo}/>
-      <Menu/>
+      <MenuContainer/>
     </Drawer>
   </div>
 )

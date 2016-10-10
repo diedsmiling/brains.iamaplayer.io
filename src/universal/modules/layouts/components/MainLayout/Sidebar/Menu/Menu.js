@@ -1,21 +1,37 @@
 import React, {PropTypes} from 'react'
-//import classes from './Menu.css'
+import {Link} from 'react-router'
+import classes from './Menu.css'
 import Menu from 'material-ui/Menu'
 import MenuItem from 'material-ui/MenuItem'
 
 const MenuWrapper = props => (
   <div>
     <Menu>
-      <MenuItem primaryText='News'/>
-      <MenuItem primaryText='Pages'/>
-      <MenuItem primaryText='Seasons'/>
-      <MenuItem primaryText='Teams'/>
+      {
+        props.menuItems.map((item, i) => (
+          <Link
+            key={i}
+            className={classes.link}
+            to={item.urn}
+            activeClassName={classes.active}
+          >
+            <MenuItem
+              key={item.text}
+              primaryText={item.text}
+            />
+          </Link>
+        ))
+
+      }
     </Menu>
   </div>
 )
 
 MenuWrapper.propTypes = {
-
+  menuItems: PropTypes.arrayOf({
+    text: PropTypes.string,
+    urn: PropTypes.string
+  })
 }
 
 export default MenuWrapper
