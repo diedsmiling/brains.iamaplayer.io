@@ -22,8 +22,7 @@ export default class MainLayout extends Component {
           className={classNames({
             'container-fluid': true,
             [styles.desktopOffset]: !isMobile
-          })
-         }
+          })}
         >
           {children}
         </div>

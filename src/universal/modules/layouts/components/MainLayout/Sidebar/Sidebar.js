@@ -11,7 +11,7 @@ const Sidebar = props => (
       open={props.isOpen}
       onRequestChange={props.layoutActions.toggleDrawer} //eslint-disable-line
     >
-      <Logo/>
+      <Logo className={classes.logo}/>
       <Menu/>
     </Drawer>
   </div>
