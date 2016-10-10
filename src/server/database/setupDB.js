@@ -9,7 +9,8 @@ const databases = ['iamaplayer', 'ava']
 const database = [
   {name: 'users', indices: ['email']},
   {name: 'lanes', indices: ['userId']},
-  {name: 'notes', indices: ['laneId']}
+  {name: 'notes', indices: ['laneId']},
+  {name: 'newsItems', indices: ['newsItemId']}
 ]
 
 export default async function setupDB(isUpdate = false) {
