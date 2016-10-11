@@ -30,7 +30,7 @@ function getNewsImports(importMap) {
   return {
     component: importMap.get('component'),
     optimistic: importMap.get('optimistic').optimistic,
-    lanes: importMap.get('news').reducer,
+    news: importMap.get('news').reducer,
     socket: importMap.get('socket').socketClusterReducer
   }
 }
