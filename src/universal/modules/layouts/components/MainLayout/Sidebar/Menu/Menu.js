@@ -16,6 +16,7 @@ const MenuWrapper = props => (
             activeClassName={classes.active}
           >
             <MenuItem
+              leftIcon={item.icon}
               key={item.text}
               primaryText={item.text}
             />
