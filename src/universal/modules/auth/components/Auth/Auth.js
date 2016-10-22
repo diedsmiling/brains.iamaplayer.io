@@ -25,6 +25,7 @@ export default class Auth extends Component {
       })
     }),
     isAuthenticating: PropTypes.bool,
+    isAuthenticated: PropTypes.bool,
     isLogin: PropTypes.bool,
     authError: PropTypes.shape({
       _error: PropTypes.string,
@@ -41,7 +42,8 @@ export default class Auth extends Component {
 
   componentWillMount() {
     const authToken = localStorage.getItem(socketOptions.authTokenName)
-    if (authToken) {
+    const {isAuthenticated} = this.props
+    if (authToken && isAuthenticated) {
       this.props.dispatch(push('/'))
     }
   }

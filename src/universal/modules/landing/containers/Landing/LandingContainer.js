@@ -18,7 +18,10 @@ export default class LandingContainer extends Component {
 }
 
 function mapStateToProps(state) {
+  state = ensureState(state)
+  const auth = state.get('auth')
   return {
-    isAuthenticated: ensureState(state).getIn(['auth', 'isAuthenticated'])
-  };
+    isAuthenticated: ensureState(state).getIn(['auth', 'isAuthenticated']),
+    hasAuthError: Boolean(auth.get('error').size)
+  }
 }
