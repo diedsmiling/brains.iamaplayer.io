@@ -11,7 +11,7 @@ export default class LandingContainer extends Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
     isAuthenticated: PropTypes.bool.isRequired
-  };
+  }
 
   render() {
     return <MainLayout {...this.props}/>
