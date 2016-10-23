@@ -4,7 +4,7 @@ import {push} from 'react-router-redux'
 
 export default class NewsList extends Component {
   static propTypes = {
-
+    dispatch: PropTypes.func
   }
 
   componentDidMount() {
