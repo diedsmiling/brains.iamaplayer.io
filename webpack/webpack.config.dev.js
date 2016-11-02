@@ -1,24 +1,24 @@
-import path from 'path';
-import webpack from 'webpack';
-import cssModulesValues from 'postcss-modules-values';
-import {getDotenv} from '../src/universal/utils/dotenv';
-import HappyPack from 'happypack';
+import path from 'path'
+import webpack from 'webpack'
+import cssModulesValues from 'postcss-modules-values'
+import {getDotenv} from '../src/universal/utils/dotenv'
+import HappyPack from 'happypack'
 
 // Import .env and expand variables:
-getDotenv();
+getDotenv()
 
-const root = process.cwd();
-const clientInclude = [path.join(root, 'src', 'client'), path.join(root, 'src', 'universal')];
-const globalCSS = path.join(root, 'src', 'universal', 'styles', 'global');
-const srcDir = path.join(root, 'src');
+const root = process.cwd()
+const clientInclude = [path.join(root, 'src', 'client'), path.join(root, 'src', 'universal')]
+const globalCSS = path.join(root, 'src', 'universal', 'styles', 'global')
+const srcDir = path.join(root, 'src')
 
 const prefetches = [
   'react-dnd/lib/index.js',
   'joi/lib/index.js',
   'universal/modules/kanban/containers/Kanban/KanbanContainer.js'
-];
+]
 
-const prefetchPlugins = prefetches.map(specifier => new webpack.PrefetchPlugin(specifier));
+const prefetchPlugins = prefetches.map(specifier => new webpack.PrefetchPlugin(specifier))
 
 const babelQuery = {
   plugins: [
@@ -34,7 +34,7 @@ const babelQuery = {
       }]
     }]
   ]
-};
+}
 
 export default {
   // devtool: 'source-maps',
@@ -89,7 +89,8 @@ export default {
     loaders: [
       {test: /\.json$/, loader: 'json-loader'},
       {test: /\.txt$/, loader: 'raw-loader'},
-      {test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/, loader: 'url-loader?limit=10000'},
+      {test: /\.svg$/, loader: 'svg-inline?classPrefix'},
+      {test: /\.(png|jpg|jpeg|gif|woff|woff2)$/, loader: 'url-loader?limit=10000'},
       {test: /\.(eot|ttf|wav|mp3)$/, loader: 'file-loader'},
       {
         test: /\.css$/,
@@ -110,4 +111,4 @@ export default {
       }
     ]
   }
-};
+}

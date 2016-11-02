@@ -1,17 +1,16 @@
-import path from 'path';
-import webpack from 'webpack';
-import AssetsPlugin from 'assets-webpack-plugin';
-import cssModulesValues from 'postcss-modules-values';
-import HappyPack from 'happypack';
-import {getDotenv} from '../src/universal/utils/dotenv';
+import path from 'path'
+import webpack from 'webpack'
+import AssetsPlugin from 'assets-webpack-plugin'
+import cssModulesValues from 'postcss-modules-values'
+import HappyPack from 'happypack'
+import {getDotenv} from '../src/universal/utils/dotenv'
 
 // Import .env and expand variables:
-getDotenv();
+getDotenv()
 
-const root = process.cwd();
-const clientInclude = [path.join(root, 'src', 'client'), path.join(root, 'src', 'universal'), /joi/, /isemail/, /hoek/, /topo/];
-const globalCSS = path.join(root, 'src', 'universal', 'styles', 'global');
-
+const root = process.cwd()
+const clientInclude = [path.join(root, 'src', 'client'), path.join(root, 'src', 'universal'), /joi/, /isemail/, /hoek/, /topo/]
+const globalCSS = path.join(root, 'src', 'universal', 'styles', 'global')
 /* code can be: vendor-common, vendor-page-specific, meatier-common, meatier-page-specific
  * a small, fast landing page means only include the common from vendor + meatier
  * long-term caching means breaking apart meatier code from vendor code
@@ -29,15 +28,15 @@ const vendor = [
   // 'redux-thunk',
   // 'redux-form',
   'joi'
-];
+]
 
 const prefetches = [
   'react-dnd/lib/index.js',
   'joi/lib/index.js',
   'universal/modules/kanban/containers/Kanban/KanbanContainer.js'
-];
+]
 
-const prefetchPlugins = prefetches.map(specifier => new webpack.PrefetchPlugin(specifier));
+const prefetchPlugins = prefetches.map(specifier => new webpack.PrefetchPlugin(specifier))
 
 export default {
   context: path.join(root, 'src'),
@@ -92,7 +91,8 @@ export default {
     loaders: [
       {test: /\.json$/, loader: 'json-loader'},
       {test: /\.txt$/, loader: 'raw-loader'},
-      {test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/, loader: 'url-loader?limit=10000'},
+      {test: /\.svg$/, loader: 'svg-inline?classPrefix'},
+      {test: /\.(png|jpg|jpeg|gif|woff|woff2)$/, loader: 'url-loader?limit=10000'},
       {test: /\.(eot|ttf|wav|mp3)$/, loader: 'file-loader'},
       {
         test: /\.css$/,
@@ -112,4 +112,4 @@ export default {
       }
     ]
   }
-};
+}
