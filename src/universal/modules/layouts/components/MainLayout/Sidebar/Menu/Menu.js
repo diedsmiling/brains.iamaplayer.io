@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react'
 import {Link} from 'react-router'
-import classes from './Menu.css'
+import styles from './Menu.css'
 import Menu from 'material-ui/Menu'
 import MenuItem from 'material-ui/MenuItem'
 
@@ -11,9 +11,9 @@ const MenuWrapper = props => (
         props.menuItems.map((item, i) => (
           <Link
             key={i}
-            className={classes.link}
+            className={styles.link}
             to={item.urn}
-            activeClassName={classes.active}
+            activeClassName={styles.active}
           >
             <MenuItem
               leftIcon={item.icon}

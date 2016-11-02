@@ -1,5 +1,16 @@
 .wrapper{
     display: flex;
     justify-content: center;
-    color: rgba(0, 0, 0, 0.2);
+    color: #cccccc;
+}
+.noData{
+    width: 400px;
+    text-align: center;
+}
+.noData svg{
+    height: 372px;
+}
+.fullWidth{
+    display: inline-block;
+    width: 400px;
 }
