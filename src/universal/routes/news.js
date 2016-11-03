@@ -15,7 +15,18 @@ export default function (store) {
       cb(null, {component})
     },
     childRoutes: [
-
+      {
+        path: 'add',
+        component: MainLayoutContainer,
+        getIndexRoute: async (location, cb) => {
+          const promiseMap = setNewsItemAddImports()
+          const importMap = await resolvePromiseMap(promiseMap)
+          const {component, optimistic, ...asyncReducers} = getNewsImports(importMap)
+          const newReducer = makeReducer(asyncReducers, optimistic)
+          store.replaceReducer(newReducer)
+          cb(null, {component})
+        }
+      }
     ]
   }
 }
@@ -36,4 +47,13 @@ function getNewsImports(importMap) {
     news: importMap.get('news').reducer,
     socket: importMap.get('socket').socketClusterReducer
   }
+}
+
+function setNewsItemAddImports() {
+  return new Map([
+    ['component', System.import('universal/modules/news/containers/AddNewsItem/AddNewsItemContainer')],
+    ['optimistic', System.import('redux-optimistic-ui')],
+    ['news', System.import('universal/modules/news/ducks/news')],
+    ['socket', System.import('redux-socket-cluster')]
+  ])
 }
