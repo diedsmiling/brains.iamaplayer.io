@@ -11,16 +11,16 @@ export default class SidebarContainer extends Component {
   }
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps() {
   return {
     menuItems: [
       {
-        urn: 'news',
+        urn: '/news',
         text: 'News',
         icon: <ReceiptIcon/>
       },
       {
-        urn: 'kanban',
+        urn: '/kanban',
         text: 'Matches',
         icon: <ListIcon/>
       }
