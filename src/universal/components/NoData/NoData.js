@@ -17,7 +17,6 @@ const Nodata = props => (
   </div>
 )
 
-
 Nodata.propTypes = {
   text: PropTypes.string,
   addButton: PropTypes.element
