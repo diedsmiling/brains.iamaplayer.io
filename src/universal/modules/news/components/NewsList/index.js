@@ -1,3 +1,3 @@
-import NewsList from './NewsList.js'
+import NewsList from './NewsList'
 
-export default NewsList.js
+export default NewsList
