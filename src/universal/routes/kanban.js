@@ -14,7 +14,7 @@ export default function (store) {
       store.replaceReducer(newReducer)
       cb(null, {component})
     }
-  };
+  }
 }
 
 function setKanbanImports() {

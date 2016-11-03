@@ -13,7 +13,10 @@ export default function (store) {
       const newReducer = makeReducer(asyncReducers, optimistic)
       store.replaceReducer(newReducer)
       cb(null, {component})
-    }
+    },
+    childRoutes: [
+
+    ]
   }
 }
 
