@@ -7,7 +7,7 @@ import NoteAdd from 'material-ui/svg-icons/action/note-add'
 
 const AddButton = () => (
   <FlatButton
-    style={{fontWeight: 200, marginTop: '10px', color: '#ffffff'}}
+    style={{fontWeight: 200, marginTop: '20px', color: '#ffffff'}}
     backgroundColor='#2ECC71'
     hoverColor='#289A58'
     label='Add one'
