@@ -130,5 +130,5 @@ export default class Auth extends Component {
     const redirectRoute = this.props.location.query.next || '/'
     const authFunc = this.props.isLogin ? loginUser : signupUser
     return authFunc(dispatch, data, redirectRoute)
-  };
+  }
 }
