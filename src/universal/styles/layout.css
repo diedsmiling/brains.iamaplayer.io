@@ -1,1 +1,5 @@
 @value maxWidth: 100%;
+
+.form-group{
+  margin: 20px 0;
+}

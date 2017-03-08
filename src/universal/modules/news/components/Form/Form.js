@@ -2,18 +2,26 @@ import React, {PropTypes} from 'react'
 import styles from './Form.css'
 import FlatButton from 'material-ui/svg-icons/action/note-add'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
-import ContentAdd from 'material-ui/svg-icons/content/add'
+import TextField from 'material-ui/TextField'
+import DatePicker from 'material-ui/DatePicker'
+import Editor from 'universal/components/Editor'
+const today = new Date()
 
 const Form = props => (
   <div className={styles.formWrapper}>
-    <h2>Add a news item</h2>
-    <label htmlFor='dd'>
-      <FloatingActionButton mini secondary>
-        <input id='dd' type='file' style={{visibility: 'hidden'}}/>
-        <ContentAdd/>
-      </FloatingActionButton>
-    </label>
-
+    <h2>Add a news item!</h2>
+    <div className='form-group'>
+      <TextField
+        hintText='Title'
+        floatingLabelText='Title'
+      />
+    </div>
+    <div className='form-group'>
+      <DatePicker defaultDate={today} hintText='Date'/>
+    </div>
+    <div className='form-group'>
+      <Editor/>
+    </div>
   </div>
 )
 
