@@ -1,5 +1,6 @@
 import React from 'react'
 import MarkdownEditor from 'material-ui-markdown-editor'
+import '../../styles/md-editor.css'
 
 export default class Editor extends React.Component {
   render() {

@@ -1,0 +1,7 @@
+@import '../../styles/md-editor.css';
+@global-import 'codemirror/lib/codemirror.css';
+@global-import 'material-ui-markdown-editor/dist/MarkdownEditor/codemirrorOverride.css';
+
+.red{
+  color: red;
+}
